@@ -1,0 +1,22 @@
+name: saucectl cypress tests v1
+'on':
+  pull_request: null
+  push:
+    paths:
+      - v1
+    branches:
+      - main
+env:
+  SAUCE_USERNAME: '${{secrets.nilesh.estone@gmail.com}}'
+  SAUCE_ACCESS_KEY: '${{secrets.682771f8-391a-4014-8ba0-5662e162c089}}'
+  GITHUB_TOKEN: '${{ github.token }}'
+jobs:
+  main:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Saucectl RUN
+        uses: saucelabs/saucectl-run-action@v3
+        with:
+          working-directory: v1
